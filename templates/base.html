@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>College Placement System</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Upcoming Placements</h2>
+                <ul>
+                    {% for placement in upcoming_placements %}
+                        <li>
+                            {{ placement.company_name }} - {{ placement.date }}
+                            <a href="{{ url_for('placement_detail', placement_id=placement.id) }}">View Details</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h2>Recent Placements</h2>
+                <ul>
+                    {% for placement in recent_placements %}
+                        <li>
+                            {{ placement.company_name }} - {{ placement.date }}
+                            <a href="{{ url_for('placement_detail', placement_id=placement.id) }}">View Details</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Search Placements</h2>
+                <form action="" method="get">
+                    <input type="text" name="search" placeholder="Search by company name or date">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
